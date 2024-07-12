@@ -17,6 +17,8 @@
         android:background="@drawable/custom_rectangle"
         app:layout_constraintBottom_toTopOf="@+id/guideline_two"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
     <androidx.appcompat.widget.AppCompatImageView
