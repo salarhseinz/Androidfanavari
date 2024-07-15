@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--برای اینکه قابلیت جدید را داخل برنامه پیاده سازی کنیم نیاز هست که در
+    پرمیژن یعنی کد زیر آن را اضافه کنید -->
+    <!--کد زیر دراصل برای اجازه گرفتن از کاربر است مانند اینکه اجازه برای
+    دسترسی به تنظیمات و غیره-->
+    <uses- android:name="com.android.alarm.permission.SET_ALARM"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,8 +23,12 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <!--همان آلارمی که در بالا پرمیژن برایش تعریف کردیم را در
+                اینجا نیز باید کد های زیر را برایش تعریف کنیم-->
+                <action android:name="android.intent.action.SET_ALARM" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>
