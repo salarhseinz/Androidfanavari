@@ -1,6 +1,7 @@
 package com.example.androidfanavari40205
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.AlarmClock
 import androidx.activity.enableEdgeToEdge
@@ -9,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.androidfanavari40205.databinding.ActivityMainBinding
 import com.google.android.material.button.MaterialButton
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -38,7 +40,9 @@ class MainActivity : AppCompatActivity() {
         //implicit intent =  یعنی عملیات و انتقال به صفحه های خارج از برنامه مثل ایمیل
 
 
-
+        binding.imageViewProfile.setOnClickListener {
+            openWebPage("https://www.fanavari.co")
+        }
 
 
 
@@ -51,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun createAlarm(message: String,hour: Int,minute: Int){
+    private fun createAlarm(message: String,hour: Int,minute: Int){
         val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply{
             putExtra(AlarmClock.EXTRA_MESSAGE,message)
             putExtra(AlarmClock.EXTRA_HOUR,hour)
@@ -60,5 +64,12 @@ class MainActivity : AppCompatActivity() {
         //if (intent.resolveActivity(packageManager) != null){
         startActivity(intent)
         //}
+    }
+    private fun openWebPage(url: String){
+        val webpage: Uri = Uri.parse(url)
+        val intent = Intent(Intent.ACTION_VIEW, webpage)
+        if (intent.resolveActivity(packageManager) != null){
+            startActivity(intent)
+        }
     }
 }

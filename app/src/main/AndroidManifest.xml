@@ -29,6 +29,10 @@
                 اینجا نیز باید کد های زیر را برایش تعریف کنیم-->
                 <action android:name="android.intent.action.SET_ALARM" />
                 <category android:name="android.intent.category.DEFAULT" />
+
+                <!--برای رفتن به سایت نیز باید حالت دیفالت بالا و کد زیر را اضاقفه کنیم
+                ولی چون دیفالت را موجود داریم فقط پایینی را اضافه میکنیم-->
+                <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
     </application>
