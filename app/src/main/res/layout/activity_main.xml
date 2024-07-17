@@ -111,8 +111,12 @@
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/font_family"
                 android:text="@string/android_class"
+                app:layout_constraintBottom_toTopOf="@+id/buttonTodoList"
+                app:layout_constraintEnd_toEndOf="@+id/textView_Name"
+                app:layout_constraintHorizontal_bias="0.269"
                 app:layout_constraintStart_toStartOf="@+id/textView_Name"
-                app:layout_constraintTop_toBottomOf="@+id/textView_Name" />
+                app:layout_constraintTop_toBottomOf="@+id/textView_Name"
+                app:layout_constraintVertical_bias="0.0" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageView_Profile"

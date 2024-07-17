@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.provider.AlarmClock
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.androidfanavari40205.databinding.ActivityMainBinding
@@ -15,13 +16,13 @@ import java.net.URL
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.oncreate(savedInstanceState)
         //1
         setContentView(R.layout.activity_main)
-        val buttonTodo : MaterialButton = findViewById(R.id.buttonTodoList)
-    //روش غیراستاندارد برای صدا کردن 1
+        val buttonTodo: MaterialButton = findViewById(R.id.buttonTodoList)
+        //روش غیراستاندارد برای صدا کردن 1
         buttonTodo.setOnClickListener {
-            createAlarm("test",12,15)
+            createAlarm("test", 12, 15)
         }
 
 
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         //زمان کلیک کردن به کارهای زیر را انجام دهد
         binding.buttonEditProfile.setOnClickListener {
-            val intent = Intent(this,DashboardActivity::class.java)
+            val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
 
@@ -43,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         binding.imageViewProfile.setOnClickListener {
             openWebPage("https://www.fanavari.co")
         }
-
 
 
         /*enableEdgeToEdge()
@@ -68,8 +68,19 @@ class MainActivity : AppCompatActivity() {
     private fun openWebPage(url: String){
         val webpage: Uri = Uri.parse(url)
         val intent = Intent(Intent.ACTION_VIEW, webpage)
-        if (intent.resolveActivity(packageManager) != null){
+        //if (intent.resolveActivity(packageManager) != null){
             startActivity(intent)
-        }
+        //}
     }
-}
+
+    private fun composeEmail(addresses: Array<String>, subject: String/*attachment: Uri*/) {
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "*/*"
+            putExtra(Intent.EXTRA_EMAIL, addresses)
+            putExtra(Intent.EXTRA_SUBJECT, subject)
+        //    putExtra(Intent.EXTRA_STREAM, attachment)
+        }
+        //if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        //}
+    }

@@ -34,6 +34,12 @@
                 ولی چون دیفالت را موجود داریم فقط پایینی را اضافه میکنیم-->
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
+            <!--تگ های مربوط به ایمیل-->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <!--<data android:type="*/*" />-->
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 
